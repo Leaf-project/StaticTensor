@@ -1,2 +1,0 @@
-xor = Gen.FLLC.FULLCND 4
-xor.save 'tests/xor_mdl.bin'
