@@ -1,0 +1,10 @@
+seed 1
+#xor = Gen.FLLC.FC1D 2 'identity'; 3 'Gauss'; 1 'Gauss' -rnd
+xor = Gen.FLLC.FULLCND 4
+xor.ptr normal
+xor.save 'tests/xor_mdl.bin'
+cvs = Str.cvs '0,0;0\n1,1;0\n1,0;1\n0,1;1'
+data = Convertor.cvs_to_bin cvs:cvs bsize:2 inputs:2,1; outputs:1,1;
+data.save 'tests/xor_data.bin'
+xor = Train.simple mdl:xor data:data mdt:'RMSProp' echopes:100
+xor.show_result data:data -v_by_v
